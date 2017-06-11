@@ -15,6 +15,8 @@ app.controller('throwController', ['$scope', function($scope){
   $scope.result = result;
   $scope.throw = function(){
     if(firstThrow){
+      $scope.strike = '';
+      $scope.spare = '';
       firstResult = Math.floor(Math.random()*11);
       $scope.firstThrow = firstResult;
       $scope.secondThrow = 0;
@@ -37,6 +39,7 @@ app.controller('throwController', ['$scope', function($scope){
         }
         strike = true;
         console.log("Strike!!");
+        $scope.strike = 'X';
         secondResult = 0;
         $scope.secondThrow = secondResult;
         firstThrow = true;
@@ -61,6 +64,7 @@ app.controller('throwController', ['$scope', function($scope){
       if((firstResult+secondResult) === 10){
         spare = true;
         console.log("Spare!!")
+        $scope.spare = 'X';
       }
       if(result.length > 9 && !(strike) && !(spare)){
         $scope.isDisabled = true;

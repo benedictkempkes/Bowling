@@ -10,30 +10,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
     <link href="css/main.css" rel="stylesheet" tyle="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   </head>
   <!-- image hier einfügen-->
-  <body>
+  <body background="img/bg.jpg">
     <container>
       <div class="row" ng-controller="throwController">
         <!-- Left part -->
         <div class="col-md-4">
           <div id="topleft">
-            <p>Strike</p>
-            <p>Spare</p>
+            <p>Strike {{ strike }}</p>
+            <p>Spare {{ spare }}</p>
           </div>
-          <div id="bottomright">
+          <div id="bottomleft">
             <button type="button" ng-click="reset()">Reset</button>
           </div>
         </div>
+
         <!-- Middle part -->
         <div class="col-md-4">
-          <div id="currentThrow">
+          <div id="topmiddle">
               <text>{{firstThrow}}</text>
               <text>{{secondThrow}}</text>
           </div>
-          <button ng-disabled="isDisabled" type="button" ng-click="throw()">Wurf</button><br />
-          <button type="button">Highscore</button>
+          <div id="middlemiddle">
+            <button ng-disabled="isDisabled" type="button" ng-click="throw()">Wurf</button>
+          </div>
+          <div id="bottommiddle">
+            <button type="button">Highscore</button>
+          </div>
         </div>
+
         <!-- Right part -->
         <div class="col-md-4">
           <table>
@@ -45,10 +52,10 @@
             </thead>
             <tbody>
               <tr ng-repeat="t in result">
-                <td>
+                <td class="leftTable">
                   {{t[0]}}
                 </td>
-                <td>
+                <td class="rightTable">
                   {{t[1]}}
                 </td>
               </tr>
@@ -56,7 +63,7 @@
           </table>
           <br />
           <div id="currentScore">
-            {{ currentScore }}
+            Ergebnis: {{ currentScore }}
           </div>
         </div>
       </div>
